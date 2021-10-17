@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="origin-trial" data-feature="WebVR (For Chrome M59+)" data-expires="2017-07-28" content="ArFv1ZeTwzkhjNE00uAE+XtiQB41fwqG/TqlFMLrepd9sforQSvQE/tgfIbUMYNuNre4QR1k4/z8xp2mV3dbhwwAAABeeyJvcmlnaW4iOiJodHRwczovL2FmcmFtZS5pbzo0NDMiLCJmZWF0dXJlIjoiV2ViVlIxLjEiLCJleHBpcnkiOjE1MDEyMTcwMDIsImlzU3ViZG9tYWluIjp0cnVlfQ==">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtual conference</title>
+    <meta name="description" content="Shopping - A-Frame">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+
+  </head>
+  <body>
+
+<a-scene background="color: #ECECEC" renderer="colorManagement: true;">
+
+  <a-camera camera="active: true" look-controls wasd-controls position="6 3.3 3" >
+   <a-cursor ></a-cursor>
+</a-camera>
+
+<a-assets>
+
+<a-asset-item id="scene table" src="scene table.glb" scale : 20% ></a-asset-item>
+<a-asset-item id = "scene chair" src ="scene chair.glb" scale : 20 %></a-asset-item>
+<a-asset-item id="tony man" src="tony man.glb" scale : 20% ></a-asset-item>
+<a-asset-item id="business man" src="business man.glb" scale : 20% ></a-asset-item>
+<a-asset-item id="plant" src="plant.glb" scale : 20% ></a-asset-item>
+<a-asset-item id="sofa" src="sofa.glb" scale : 20% ></a-asset-item>
+<a-asset-item id="mac" src="mac.glb" scale : 20% ></a-asset-item>
+<a-asset-item id="bottle" src="bottle/scene.gltf" scale : 20% ></a-asset-item>
+<a-asset-item id="ac" src="ac/scene.gltf" scale : 20% ></a-asset-item>
+
+
+<img id="fall" src="fall.png">
+<img id="smiley" src="smiley.png">
+
+</a-assets>
+<a-entity id="model" >
+<a-gltf-model position="7 0 -3" rotation="0 0 0" scale=".015 .015 .015" src="#scene table"></a-gltf-model>
+<a-gltf-model position="4 -1.5 -3" rotation="0 0 0" scale=".02 .02 .02" src="#scene chair"></a-gltf-model>
+<a-gltf-model position="6 -1.5 -3" rotation="0 0 0" scale=".02 .02 .02" src="#scene chair"></a-gltf-model>
+<a-gltf-model position="8 -1.5 -3" rotation="0 0 0" scale=".02 .02 .02" src="#scene chair"></a-gltf-model>
+<a-gltf-model position="3 2 -1" rotation="0 120 0" scale="1.5 1.5 1.5" src="#tony man"></a-gltf-model>
+<a-gltf-model position="10 0 -5" rotation="0 330 0" scale=".02 .02 .02" src="#business man"></a-gltf-model>
+<a-gltf-model position="13.5 0 -8.5" rotation="0 0 0" scale=".5 .5 .5" src="#plant"></a-gltf-model>
+<a-gltf-model position="0 0 -8.5" rotation="0 0 0" scale=".5 .5 .5" src="#plant"></a-gltf-model>
+
+<a-gltf-model position="13.2 0 1" rotation="0 0 0" scale=".06 .06 .06" src="#sofa"></a-gltf-model>
+<a-gltf-model position="5 2 -2.5" rotation="0 0 0" scale=".14 .14 .14 " src="#mac"></a-gltf-model>
+<a-gltf-model position="6 1.5 -2.5" rotation="0 0 0" scale="3 3 3 " src="#bottle"></a-gltf-model>
+<a-gltf-model position="-0.7 6 -2.5" rotation="0 90 0" scale=".04 .04 .04 " src="#ac"></a-gltf-model>
+
+
+</a-entity>
+
+<a-cylinder id="smiley" color="#101010" height="0.02" radius="0.8" animation__rotation="property: rotation; from: -270 0 0; to: -90 0 0; dur: 750; delay: 1000" animation__position="property: position; from: 8 0 -9.5; to: 12.5 3.5 -9.5; dur: 750; delay: 1000">
+<a-image src="#smiley" width="3" height="2" rotation="90 0 0" position="0 -.05 0" scale=".4 .4 .4"></a-image>
+</a-cylinder>
+<a-light type="directional" color="#fff" intensity="0" position="-1 2 1"></a-light>
+<a-light type="ambient" color="#fff"></a-light>
+
+<a-box src="wall.png" position="-1 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
+<a-box src="wall.png" position="15 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
+<a-box src="side wall.png" position="10 0 5" rotation="0 180 0" width="50" height="15"  shadow="" material="" geometry=""></a-box>
+<a-box src="front.png" position="0 0 -10" rotation="0 180 0" width="50" height="15" color="#a0522d" shadow="" material="" geometry=""></a-box>
+
+<a-plane src="wood.png" position="0 0 -4" rotation="-90 0 0" width="35" height="20"  shadow="" material="" geometry=""></a-plane>
+<a-box src="wood.png" position="0 8 -4" rotation="-90 0 0" width="40" height="30"  shadow="" material="" geometry=""></a-box>
+
+<!-- screen 1 user-->
+<a-box position="9.2  3 -9.7" width="4.5"  height="3" color="black">
+<video id="webcamVideo" autoplay loop="true" ></video>
+<a-video src="#webcamVideo" width="4.5" height="3" position="0 0 .5"></a-video>
+</a-box>
+
+
+<!-- button 2 -->
+
+
+<a-box id="webcamButton" position="9 5 -9.5" width="3" height ="1" color="#ccc" static-body="mass:1" webcamVideo ></a-box>
+<a-text position="8 5 -8.9" value="Start webcam" color="black" wrap-count="25"></a-text>
+
+<!-- screen -->
+
+
+<a-box position="3.5 3 -9.7" width="4.5"  height="3" color="black">
+<video id="remoteVideo" autoplay loop="true" ></video>
+<a-video src="#remoteVideo" width="4.5" height="3" position="0.09 0 0.6"></a-video>
+</a-box>
+
+<!-- button 1 admin-->
+
+<a-box id="callButton" position="3.6 5 -9.5" width="3" height =" 1" color="#ccc" static-body="mass:1" remoteVideo ></a-box>
+<a-text position="2.6 5 -8.9" value="Create call " color="black" wrap-count="25"></a-text>
+
+
+<a-box id="answerButton" position="3.6 6.5 -9.5" width="3" height =" 1" color="#ccc" static-body="mass:1" ></a-box>
+<a-text position="2.8 6.5 -8.9" value="Answer" color="black" wrap-count="25"></a-text>
+
+<!--input-->
+
+<a-box position="9 6.5 -9.5" width="3" height =" 1" color="yellow" static-body="mass:1" #callInput ></a-box>
+<a-text value = #callInput position="8 6.5 -8.9" color="black" wrap-count="25"></a-text>
+<input type ="text" id ="callInput" />
+
+
+<a-sound src="smiley audio.mp3" autoplay ="true" position="0 2 5" ></a-sound>
+
+
+
+<script type="module" src="/main.js"></script>
+</a-scene>
+
+  </body>
+  
+</html>
+
+
+<!--<a-box id="callInput" position="6 7 -8" width="3" height =" 1" color="yellow" static-body="mass:1"  > </a-box>
+<a-text position="5 7 -7.4" value = "callInput" color="black" wrap-count="25"></a-text>-->
