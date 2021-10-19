@@ -9,7 +9,8 @@
     <meta name="description" content="Shopping - A-Frame">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-
+    <script type="module" src="/main.js"></script>
+    <script src="keyboards.js"></script>
 
   </head>
   <body>
@@ -17,9 +18,21 @@
 <a-scene background="color: #ECECEC" renderer="colorManagement: true;">
 
   <a-camera camera="active: true" look-controls wasd-controls position="6 3.3 3" >
-   <a-cursor ></a-cursor>
+  <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+
 </a-camera>
 
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+
+      <a-entity id="hand" laser-controls="hand: right">
+        <a-sphere radius="0.03"></a-sphere>
+      </a-entity>
+
+      <!-- Change hand to `#hand` for VR. -->
+  
+      <a-entity id="keyboard" super-keyboard="hand: #mouseCursor; imagePath:../../dist/" position="6.5 2.5 -2" rotation="-30 0 0">
+      </a-entity>
+ 
 <a-assets>
 
 <a-asset-item id="scene table" src="scene table.glb" scale : 20% ></a-asset-item>
@@ -110,13 +123,10 @@
 
 
 
-<script type="module" src="/main.js"></script>
+
 </a-scene>
 
   </body>
-  
 </html>
 
 
-<!--<a-box id="callInput" position="6 7 -8" width="3" height =" 1" color="yellow" static-body="mass:1"  > </a-box>
-<a-text position="5 7 -7.4" value = "callInput" color="black" wrap-count="25"></a-text>-->
