@@ -66,14 +66,14 @@
   /******/ ([
   /* 0 */
   /***/ (function(module, exports, __webpack_require__) {
-  
+
   /* global AFRAME */
   var KEYBOARDS = __webpack_require__(1);
-  
+
   if (typeof AFRAME === 'undefined') {
     throw new Error('Component attempted to register before AFRAME was available.');
   }
-  
+
   var FontFactors = {
     roboto: 17,
     aileronsemibold: 20,
@@ -85,7 +85,7 @@
     mozillavr: 9.5,
     sourcecodepro: 20.3
   };
-  
+
   AFRAME.registerComponent('super-keyboard', {
     schema: {
       align: {default: 'left', oneOf: ['left', 'center', 'right']},
@@ -111,24 +111,24 @@
       value: {type: 'string', default: ''},
       width: {default: 2}
     },
-  
+
     init: function () {
       this.el.addEventListener('click', this.click.bind(this));
       this.changeEventDetail = {};
       this.textInputObject = {};
-  
+
       this.keys = null;
       this.focused = false;
       this.keyHover = null;
       this.prevCheckTime = null;
       this.shift = false;
-  
+
       this.rawValue = this.data.value;
       this.defaultValue = this.data.value;
-  
+
       this.userFilterFunc = null;
       this.intervalId = 0;
-  
+
       // Create keyboard image.
       this.kbImg = document.createElement('a-entity');
       this.kbImg.classList.add('keyboardRaycastable');
@@ -136,7 +136,7 @@
       this.kbImg.addEventListener('raycaster-intersected', this.hover.bind(this));
       this.kbImg.addEventListener('raycaster-intersected-cleared', this.blur.bind(this));
       this.el.appendChild(this.kbImg);
-  
+
       // Create label.
       this.label = document.createElement('a-entity');
       this.label.setAttribute('text', {
@@ -149,7 +149,7 @@
         width: this.data.width,
         wrapCount: 30});
       this.el.appendChild(this.label);
-  
+
       // Create input.
       this.textInput = document.createElement('a-entity');
       this.textInput.setAttribute('text', {
