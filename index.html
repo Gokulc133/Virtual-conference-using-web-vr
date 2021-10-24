@@ -9,23 +9,18 @@
     <meta name="description" content="Shopping - A-Frame">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-    <script type="module" src="/main.js"></script>
-    <script src="keyboards.js"></script>
+   
 
   </head>
   <body>
 
 <a-scene background="color: #ECECEC" renderer="colorManagement: true;">
 
-  <a-camera camera="active: true" look-controls wasd-controls position="6 3.3 3" >
-  <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-
-</a-camera>
+ 
 
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
 
       <a-entity id="hand" laser-controls="hand: right">
-        <a-sphere radius="0.03"></a-sphere>
       </a-entity>
 
       <!-- Change hand to `#hand` for VR. -->
@@ -33,6 +28,10 @@
       <a-entity id="keyboard" super-keyboard="hand: #mouseCursor; imagePath:../../dist/" position="6.5 2.5 -2" rotation="-30 0 0">
       </a-entity>
  
+      <a-camera camera="active: true" look-controls wasd-controls position="6 3.3 3" >
+        <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
+      
+      </a-camera>
 <a-assets>
 
 <a-asset-item id="scene table" src="scene table.glb" scale : 20% ></a-asset-item>
@@ -114,19 +113,16 @@
 
 <!--input-->
 
-<a-box position="9 6.5 -9.5" width="3" height =" 1" color="yellow" static-body="mass:1" #callInput ></a-box>
-<a-text value = #callInput position="8 6.5 -8.9" color="black" wrap-count="25"></a-text>
-<input type ="text" id ="callInput" />
+<a-box position="9 6.5 -9.5" width="3" height =" 1" color="yellow" static-body="mass:1"></a-box>
+<a-text value = "callInput" position="8 6.5 -8.9" color="black" wrap-count="25"></a-text>
+<input id ="callInput"/>
 
 
-<a-sound src="smiley audio.mp3" autoplay ="true" position="0 2 5" ></a-sound>
-
-
+<a-sound src="audio.mp3" autoplay ="true" position="0 2 5" ></a-sound>
 
 
 </a-scene>
-
-  </body>
-</html>
-
-
+</body>
+  <script type="module" src="main.js"></script>
+  <script type ="text/javascript" src="keyboards.js"></script>
+</html> 

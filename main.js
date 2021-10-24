@@ -33,6 +33,7 @@ const servers = {
   iceCandidatePoolSize: 10,
 };
 
+
 // Global State
 const pc = new RTCPeerConnection(servers);
 let localStream = null;
@@ -46,8 +47,6 @@ const callInput = document.getElementById('callInput');
 const answerButton = document.getElementById('answerButton');
 const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
-
-
 
 // 1. Setup media sources
 
@@ -118,8 +117,8 @@ callButton.onclick = async () => {
       }
     });
   });
-
   hangupButton.disabled = false;
+
 };
 
 // 3. Answer the call with the unique ID

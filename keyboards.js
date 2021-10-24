@@ -110,6 +110,7 @@
       multipleInputs: {default: true},
       value: {type: 'string', default: ''},
       width: {default: 2}
+      
     },
 
     init: function () {
@@ -182,26 +183,26 @@
           self.el.setAttribute('super-keyboard', {value: ss});
         }
       });
-  
+
       document.addEventListener('show', this.open.bind(this));
-  
+
       this.hand = null;
       this.handListenersSet = false;
       this.raycaster = null;
     },
-  
+
     update: function (oldData) {
       var kbdata = KEYBOARDS[this.data.model];
       var w = this.data.width;
       var h = this.data.width / 2;
       var w2 = w / 2;
       var h2 = h / 2;
-  
+
       if (kbdata === undefined) {
         console.error('super-keyboard ERROR: model "' + this.data.model + '" undefined.');
         return;
       }
-  
+
       if (!oldData || this.defaultValue !== oldData.defaultValue) {
         this.rawValue = this.data.value;
         this.defaultValue = this.data.value;
@@ -209,7 +210,7 @@
       } else {
         this.updateTextInput(this.filter(this.rawValue));
       }
-  
+
       if (this.data.width !== oldData.width ||
           this.data.height !== oldData.height ||
           this.data.keyColor !== oldData.keyColor) {
@@ -221,7 +222,7 @@
           transparent: true
         });
       }
-  
+
       if (this.data.label !== oldData.label ||
           this.data.labelColor !== oldData.labelColor ||
           this.data.width !== oldData.width) {
@@ -229,15 +230,15 @@
           value: this.data.label, color: this.data.labelColor, width: this.data.width});
         this.label.object3D.position.set(0, 0.3 * w, -0.02);
       }
-  
+
       if (this.data.width !== oldData.width ||
           this.data.keyBgColor !== oldData.keyBgColor) {
         this.initKeyColorPlane();
       }
-  
+
       var inputx = this.data.align !== 'center' ? kbdata.inputOffsetX * w : 0;
       if (this.data.align === 'right') { inputx *= -1; }
-  
+
       if (this.data.font !== oldData.font ||
           this.data.inputColor !== oldData.inputColor ||
           this.data.width !== oldData.width ||
@@ -250,7 +251,7 @@
           align: this.data.align
         });
       }
-  
+
       // Some hack where the inputRect is stored in the Insert key.
       for (var i = 0; i < kbdata.layout.length; i++) {
         var kdata = kbdata.layout[i];
@@ -258,35 +259,35 @@
           this.inputRect = kdata;
         }
       }
-  
+
       this.textInput.object3D.position.set(
         inputx,
         (w / 4) - (this.inputRect.y + this.inputRect.h / 2) * w / 2 + kbdata.inputOffsetY * w,
         0.002
       );
-  
+
       if (this.data.width !== oldData.width) {
         this.cursor.setAttribute('geometry', {
           primitive: 'plane', width: 0.03 * w, height: 0.01 * w});
       }
-  
+
       this.updateCursorPosition();
       this.setupHand();
-  
+
       this.keyBgColor.set(this.data.keyBgColor);
       this.keyHoverColor.set(this.data.keyHoverColor);
       this.keyPressColor.set(this.data.keyPressColor);
-  
+
       if (this.data.show) {
         this.open();
       } else {
         this.close();
       }
     },
-  
+
     tick: function (time) {
       var intersection;
-  
+
       if (this.prevCheckTime && (time - this.prevCheckTime < this.data.interval)) { return; }
       if (!this.prevCheckTime) {
         this.prevCheckTime = time;
@@ -294,10 +295,10 @@
       }
       if (!this.raycaster) { return; }
       if (!this.focused) { return; }
-  
+
       intersection = this.raycaster.getIntersection(this.kbImg);
       if (!intersection) { return; }
-  
+
       var uv = intersection.uv;
       var keys = KEYBOARDS[this.data.model].layout;
       for (var i = 0; i < keys.length; i++) {
@@ -312,16 +313,16 @@
         }
       }
     },
-  
+
     play: function () {
       if (!this.cursorUpdated) { return; }
       this.startBlinking();
     },
-  
+
     pause: function () {
       this.stopBlinking();
     },
-  
+
     /**
      * The plane for visual feedback when a key is hovered or clicked
      */
