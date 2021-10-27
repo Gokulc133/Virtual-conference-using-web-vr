@@ -152,6 +152,8 @@
       this.el.appendChild(this.label);
 
       // Create input.
+
+      this.callInput = document.createElement('a-entity');
       this.textInput = document.createElement('a-entity');
       this.textInput.setAttribute('text', {
         align: this.data.align,
