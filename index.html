@@ -18,10 +18,10 @@
 
 
 
-<canvas id="mouseCursor" cursor="rayOrigin: mouse"></canvas>
+<a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
 
-      <canvas id="hand" laser-controls="hand: right">
-      </canvas>
+      <a-entity id="hand" laser-controls="hand: right">
+      </a-entity>
 
       <!-- Change hand to `#hand` for VR. -->
 
@@ -114,9 +114,11 @@
 <!--input-->
 
 <a-box position="9 6.5 -9.5" width="3" height =" 1" color="yellow" static-body="mass:1"></a-box>
-<a-text position="8.8 6.5 -9" value="callInput" color="black" wrap-count="25"></a-text>
+<a-text value = "callInput" position="8 6.5 -8.9" color="black" wrap-count="25"></a-text>
 <input id ="callInput"/>
 
+
+<a-sound src="audio.mp3" autoplay ="true" position="0 2 5" ></a-sound>
 
 
 </a-scene>
