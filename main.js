@@ -1,20 +1,23 @@
+var isiClicked=false;
+var isaClicked=false;
+var iscClicked=false;
+var iswClicked=false;
+
+
 import './style.css';
 
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-
-
-
 const firebaseConfig = {
-  apiKey: "AIzaSyCO-ep3YyfvWV5Wq9y17WWSmYp6wCY37cc",
-  authDomain: "virtual-conference-using-vr.firebaseapp.com",
-  projectId: "virtual-conference-using-vr",
-  storageBucket: "virtual-conference-using-vr.appspot.com",
-  messagingSenderId: "657100273866",
-  appId: "1:657100273866:web:61cf75fa21d99d4931dc33",
-  measurementId: "G-T6H2R16HJD"
+  apiKey: "AIzaSyASTcUtlsWbEnDhh477QZys7GnirZ0Hl9g",
+  authDomain: "virtual-conference-using-webvr.firebaseapp.com",
+  projectId: "virtual-conference-using-webvr",
+  storageBucket: "virtual-conference-using-webvr.appspot.com",
+  messagingSenderId: "104357615873",
+  appId: "1:104357615873:web:d8ef08a50da175c2ebe300",
+  measurementId: "G-06WR16TEKG"
 };
 
 
@@ -33,7 +36,6 @@ const servers = {
   iceCandidatePoolSize: 10,
 };
 
-
 // Global State
 const pc = new RTCPeerConnection(servers);
 let localStream = null;
@@ -51,6 +53,8 @@ const hangupButton = document.getElementById('hangupButton');
 // 1. Setup media sources
 
 webcamButton.onclick = async () => {
+  if(!iswClicked){
+    iswClicked = true;
   localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
   remoteStream = new MediaStream();
 
@@ -72,10 +76,18 @@ webcamButton.onclick = async () => {
   callButton.disabled = false;
   answerButton.disabled = false;
   webcamButton.disabled = true;
+  callInput.disabled = true;
+
+  setTimeout(function(){
+    iswClicked = false;
+},100);
+}
 };
 
 // 2. Create an offer
 callButton.onclick = async () => {
+  if(!iscClicked){
+    iscClicked = true;
   // Reference Firestore collections for signaling
   const callDoc = firestore.collection('calls').doc();
   const offerCandidates = callDoc.collection('offerCandidates');
@@ -83,10 +95,12 @@ callButton.onclick = async () => {
 
   callInput.value = callDoc.id;
 
+  alert(callInput.value);
   // Get candidates for caller, save to db
   pc.onicecandidate = (event) => {
     event.candidate && offerCandidates.add(event.candidate.toJSON());
   };
+
 
   // Create offer
   const offerDescription = await pc.createOffer();
@@ -117,13 +131,37 @@ callButton.onclick = async () => {
       }
     });
   });
-  hangupButton.disabled = false;
 
+  hangupButton.disabled = false;
+  setTimeout(function(){
+    iscClicked = false;
+},100);
+}
 };
 
+
+
+var call;
+ // Call Input
+ var isClicked=false;
+ callInput.onclick = async () => {
+
+  if(!isClicked){
+    isClicked = true;
+    call = prompt("ID");
+    console.log("button clicked");
+
+
+    setTimeout(function(){
+        isClicked = false;
+    },500);
+}
+ };
 // 3. Answer the call with the unique ID
 answerButton.onclick = async () => {
-  const callId = callInput.value;
+  if(!isaClicked){
+    isaClicked = true;
+  const callId = call;
   const callDoc = firestore.collection('calls').doc(callId);
   const answerCandidates = callDoc.collection('answerCandidates');
   const offerCandidates = callDoc.collection('offerCandidates');
@@ -156,4 +194,8 @@ answerButton.onclick = async () => {
       }
     });
   });
+  setTimeout(function(){
+    isClicked = false;
+},100);
+}
 };

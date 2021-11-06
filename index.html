@@ -6,10 +6,10 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Virtual conference</title>
-    <meta name="description" content="Shopping - A-Frame">
+    <meta name="description" content="Virtual conference using webVR">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-   
+    <script type="module" src="main.js"></script>
 
   </head>
   <body>
@@ -25,30 +25,34 @@
 
       <!-- Change hand to `#hand` for VR. -->
 
-      <a-entity id="keyboard" super-keyboard="hand: #mouseCursor; imagePath:../../dist/" position="6.5 2.5 -2" rotation="-30 0 0">
-      </a-entity>
-
       <a-camera camera="active: true" look-controls wasd-controls position="6 3.3 3" >
         <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
 
       </a-camera>
 <a-assets>
 
-<a-asset-item id="scene table" src="scene table.glb" scale : 20% ></a-asset-item>
-<a-asset-item id = "scene chair" src ="scene chair.glb" scale : 20 %></a-asset-item>
-<a-asset-item id="tony man" src="tony man.glb" scale : 20% ></a-asset-item>
-<a-asset-item id="business man" src="business man.glb" scale : 20% ></a-asset-item>
-<a-asset-item id="plant" src="plant.glb" scale : 20% ></a-asset-item>
-<a-asset-item id="sofa" src="sofa.glb" scale : 20% ></a-asset-item>
-<a-asset-item id="mac" src="mac.glb" scale : 20% ></a-asset-item>
-<a-asset-item id="bottle" src="bottle/scene.gltf" scale : 20% ></a-asset-item>
-<a-asset-item id="ac" src="ac/scene.gltf" scale : 20% ></a-asset-item>
+  <a-asset-item id="scene table" src="scene table.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id = "scene chair" src ="scene chair.glb" scale : 20 %></a-asset-item>
+  <a-asset-item id="tony man" src="tony man.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="business man" src="business man.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="plant" src="plant.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="sofa" src="sofa.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="mac" src="mac.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="bottle" src="bottle/scene.gltf" scale : 20% ></a-asset-item>
+  <a-asset-item id="ac" src="ac/scene.gltf" scale : 20% ></a-asset-item>
+  
 
 
 <img id="fall" src="fall.png">
 <img id="smiley" src="smiley.png">
 
 </a-assets>
+
+
+
+
+
+
 <a-entity id="model" >
 <a-gltf-model position="7 0 -3" rotation="0 0 0" scale=".015 .015 .015" src="#scene table"></a-gltf-model>
 <a-gltf-model position="4 -1.5 -3" rotation="0 0 0" scale=".02 .02 .02" src="#scene chair"></a-gltf-model>
@@ -76,7 +80,7 @@
 <a-box src="wall.png" position="-1 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
 <a-box src="wall.png" position="15 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
 <a-box src="side wall.png" position="10 0 5" rotation="0 180 0" width="50" height="15"  shadow="" material="" geometry=""></a-box>
-<a-box src="front.png" position="0 0 -10" rotation="0 180 0" width="50" height="15" color="#a0522d" shadow="" material="" geometry=""></a-box>
+<a-box src="front.png" position="0 0 -10" rotation="0 180 0" width="50" height="20" color="#a0522d" shadow="" material="" geometry=""></a-box>
 
 <a-plane src="wood.png" position="0 0 -4" rotation="-90 0 0" width="35" height="20"  shadow="" material="" geometry=""></a-plane>
 <a-box src="wood.png" position="0 8 -4" rotation="-90 0 0" width="40" height="30"  shadow="" material="" geometry=""></a-box>
@@ -84,15 +88,16 @@
 <!-- screen 1 user-->
 <a-box position="9.2  3 -9.7" width="4.5"  height="3" color="black">
 <video id="webcamVideo" autoplay loop="true" ></video>
-<a-video src="#webcamVideo" width="4.5" height="3" position="0 0 .5"></a-video>
+<a-video src="#webcamVideo" width="4.5" height="3" position="0 0 .55"></a-video>
 </a-box>
 
 
 <!-- button 2 -->
 
 
-<a-box id="webcamButton" position="9 5 -9.5" width="3" height ="1" color="#ccc" static-body="mass:1" webcamVideo ></a-box>
-<a-text position="8 5 -8.9" value="Start webcam" color="black" wrap-count="25"></a-text>
+
+<a-box id="webcamButton" position="9.3   5 -9.5" width="4" height ="1" color="#ccc" static-body="mass:1" webcamVideo ></a-box>
+<a-text position="8 5 -8.9" value="START WEBCAM" color="black" wrap-count="25"></a-text>
 
 <!-- screen -->
 
@@ -105,24 +110,25 @@
 <!-- button 1 admin-->
 
 <a-box id="callButton" position="3.6 5 -9.5" width="3" height =" 1" color="#ccc" static-body="mass:1" remoteVideo ></a-box>
-<a-text position="2.6 5 -8.9" value="Create call " color="black" wrap-count="25"></a-text>
+<a-text position="2.6 5 -8.9" value="CREATE ID " color="black" wrap-count="25"></a-text>
 
 
 <a-box id="answerButton" position="3.6 6.5 -9.5" width="3" height =" 1" color="#ccc" static-body="mass:1" ></a-box>
-<a-text position="2.8 6.5 -8.9" value="Answer" color="black" wrap-count="25"></a-text>
+<a-text position="2.8 6.5 -8.9" value="JOIN" color="black" wrap-count="25"></a-text>
 
 <!--input-->
 
-<a-box position="9 6.5 -9.5" width="3" height =" 1" color="yellow" static-body="mass:1"></a-box>
-<a-text value = "callInput" position="8 6.5 -8.9" color="black" wrap-count="25"></a-text>
-<input id ="callInput"/>
+<a-box id="callInput" position="9.3 6.5 -9.5" width="4" height =" 1" color="yellow" static-body="mass:1"></a-box>
+<a-text value = "Enter MEET ID" position="8 6.5 -8.9" color="black" wrap-count="25"></a-text>
+
+<!--hangup-->
+<a-box id="hangupButton" position="14 6.5 -9.5" width="3" height =" 1" color="blue" static-body="mass:1"></a-box>
+<a-text value = "hangup" position="13 6.5 -8.9" color="black" wrap-count="25"></a-text>
 
 
-<a-sound src="audio.mp3" autoplay ="true" position="0 2 5" ></a-sound>
 
 
 </a-scene>
 </body>
-  <script type="module" src="main.js"></script>
-  <script type ="text/javascript" src="keyboards.js"></script>
+
 </html>
