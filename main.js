@@ -2,25 +2,20 @@ var isiClicked=false;
 var isaClicked=false;
 var iscClicked=false;
 var iswClicked=false;
-
-
 import './style.css';
-
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyASTcUtlsWbEnDhh477QZys7GnirZ0Hl9g",
+  apiKey: "API Key",
   authDomain: "virtual-conference-using-webvr.firebaseapp.com",
   projectId: "virtual-conference-using-webvr",
   storageBucket: "virtual-conference-using-webvr.appspot.com",
   messagingSenderId: "104357615873",
-  appId: "1:104357615873:web:d8ef08a50da175c2ebe300",
-  measurementId: "G-06WR16TEKG"
+  appId: "APP ID",
+  measurementId: "MEASUREMENT ID"
 };
-
-
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

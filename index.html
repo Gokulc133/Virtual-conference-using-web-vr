@@ -10,16 +10,10 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
     <script type="module" src="main.js"></script>
-
   </head>
   <body>
-
 <a-scene background="color: #ECECEC" renderer="colorManagement: true;">
-
-
-
 <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
-
       <a-entity id="hand" laser-controls="hand: right">
       </a-entity>
 
@@ -30,29 +24,20 @@
 
       </a-camera>
 <a-assets>
-
-  <a-asset-item id="scene table" src="scene table.glb" scale : 20% ></a-asset-item>
-  <a-asset-item id = "scene chair" src ="scene chair.glb" scale : 20 %></a-asset-item>
-  <a-asset-item id="tony man" src="tony man.glb" scale : 20% ></a-asset-item>
-  <a-asset-item id="business man" src="business man.glb" scale : 20% ></a-asset-item>
-  <a-asset-item id="plant" src="plant.glb" scale : 20% ></a-asset-item>
-  <a-asset-item id="sofa" src="sofa.glb" scale : 20% ></a-asset-item>
-  <a-asset-item id="mac" src="mac.glb" scale : 20% ></a-asset-item>
-  <a-asset-item id="bottle" src="bottle/scene.gltf" scale : 20% ></a-asset-item>
-  <a-asset-item id="ac" src="ac/scene.gltf" scale : 20% ></a-asset-item>
+  <a-asset-item id="scene table" src="backup\3d_models\scene table.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id = "scene chair" src ="backup\3d_models\scene chair.glb" scale : 20 %></a-asset-item>
+  <a-asset-item id="tony man" src="backup\3d_models\tony man.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="business man" src="backup\3d_models\business man.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="plant" src="backup\3d_models\plant.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="sofa" src="backup\3d_models\sofa.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="mac" src="backup\3d_models\mac.glb" scale : 20% ></a-asset-item>
+  <a-asset-item id="bottle" src="backup\3d_models\scene.gltf" scale : 20% ></a-asset-item>
+  <a-asset-item id="ac" src="backup\3d_models\scene.gltf" scale : 20% ></a-asset-item>
   
-
-
-<img id="fall" src="fall.png">
-<img id="smiley" src="smiley.png">
+<img id="fall" src="backup\images\fall.png">
+<img id="smiley" src="backup\images\smiley.png">
 
 </a-assets>
-
-
-
-
-
-
 <a-entity id="model" >
 <a-gltf-model position="7 0 -3" rotation="0 0 0" scale=".015 .015 .015" src="#scene table"></a-gltf-model>
 <a-gltf-model position="4 -1.5 -3" rotation="0 0 0" scale=".02 .02 .02" src="#scene chair"></a-gltf-model>
@@ -62,12 +47,10 @@
 <a-gltf-model position="10 0 -5" rotation="0 330 0" scale=".02 .02 .02" src="#business man"></a-gltf-model>
 <a-gltf-model position="13.5 0 -8.5" rotation="0 0 0" scale=".5 .5 .5" src="#plant"></a-gltf-model>
 <a-gltf-model position="0 0 -8.5" rotation="0 0 0" scale=".5 .5 .5" src="#plant"></a-gltf-model>
-
 <a-gltf-model position="13.2 0 1" rotation="0 0 0" scale=".06 .06 .06" src="#sofa"></a-gltf-model>
 <a-gltf-model position="5 2 -2.5" rotation="0 0 0" scale=".14 .14 .14 " src="#mac"></a-gltf-model>
 <a-gltf-model position="6 1.5 -2.5" rotation="0 0 0" scale="3 3 3 " src="#bottle"></a-gltf-model>
 <a-gltf-model position="-0.7 6 -2.5" rotation="0 90 0" scale=".04 .04 .04 " src="#ac"></a-gltf-model>
-
 
 </a-entity>
 
@@ -77,13 +60,13 @@
 <a-light type="directional" color="#fff" intensity="0" position="-1 2 1"></a-light>
 <a-light type="ambient" color="#fff"></a-light>
 
-<a-box src="wall.png" position="-1 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
-<a-box src="wall.png" position="15 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
-<a-box src="side wall.png" position="10 0 5" rotation="0 180 0" width="50" height="15"  shadow="" material="" geometry=""></a-box>
-<a-box src="front.png" position="0 0 -10" rotation="0 180 0" width="50" height="20" color="#a0522d" shadow="" material="" geometry=""></a-box>
+<a-box src="backup\images\wall.png" position="-1 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
+<a-box src="backup\images\wall.png" position="15 0.5 -3" rotation="0 90 0" width="15" height="15"   shadow="" material="" geometry=""></a-box>
+<a-box src="backup\images\side wall.png" position="10 0 5" rotation="0 180 0" width="50" height="15"  shadow="" material="" geometry=""></a-box>
+<a-box src="backup\images\front.png" position="0 0 -10" rotation="0 180 0" width="50" height="20" color="#a0522d" shadow="" material="" geometry=""></a-box>
 
-<a-plane src="wood.png" position="0 0 -4" rotation="-90 0 0" width="35" height="20"  shadow="" material="" geometry=""></a-plane>
-<a-box src="wood.png" position="0 8 -4" rotation="-90 0 0" width="40" height="30"  shadow="" material="" geometry=""></a-box>
+<a-plane src="backup\images\wood.png" position="0 0 -4" rotation="-90 0 0" width="35" height="20"  shadow="" material="" geometry=""></a-plane>
+<a-box src="backup\images\wood.png" position="0 8 -4" rotation="-90 0 0" width="40" height="30"  shadow="" material="" geometry=""></a-box>
 
 <!-- screen 1 user-->
 <a-box position="9.2  3 -9.7" width="4.5"  height="3" color="black">
@@ -91,16 +74,12 @@
 <a-video src="#webcamVideo" width="4.5" height="3" position="0 0 .55"></a-video>
 </a-box>
 
-
 <!-- button 2 -->
-
-
 
 <a-box id="webcamButton" position="9.3   5 -9.5" width="4" height ="1" color="#ccc" static-body="mass:1" webcamVideo ></a-box>
 <a-text position="8 5 -8.9" value="START WEBCAM" color="black" wrap-count="25"></a-text>
 
 <!-- screen -->
-
 
 <a-box position="3.5 3 -9.7" width="4.5"  height="3" color="black">
 <video id="remoteVideo" autoplay loop="true" ></video>
@@ -125,10 +104,6 @@
 <a-box id="hangupButton" position="14 6.5 -9.5" width="3" height =" 1" color="blue" static-body="mass:1"></a-box>
 <a-text value = "hangup" position="13 6.5 -8.9" color="black" wrap-count="25"></a-text>
 
-
-
-
 </a-scene>
 </body>
-
 </html>
